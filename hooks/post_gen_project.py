@@ -7,7 +7,6 @@ from pathlib import Path
 from ccds.hook_utils.custom_config import write_custom_config
 from ccds.hook_utils.dependencies import (
     basic,
-    flake8_black_isort,
     packages,
     ruff,
     scaffold,
@@ -31,13 +30,9 @@ packages_to_install += scaffold
 packages_to_install += basic
 # {% endif %}
 
-# {% if cookiecutter.linting_and_formatting == "ruff" %}
 packages_to_install += ruff
 # Remove setup.cfg
 Path("setup.cfg").unlink()
-# {% elif cookiecutter.linting_and_formatting == "flake8+black+isort" %}
-packages_to_install += flake8_black_isort
-# {% endif %}
 # track packages that are not available through conda
 pip_only_packages = [
     "awscli",

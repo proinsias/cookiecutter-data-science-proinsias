@@ -115,8 +115,6 @@ The directory structure of your new project will look something like this (depen
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
 │                         generated with `pip freeze > requirements.txt`
 │
-├── setup.cfg          <- Configuration file for flake8
-│
 └── {{ cookiecutter.module_name }}   <- Source code for use in this project.
     │
     ├── __init__.py             <- Makes {{ cookiecutter.module_name }} a Python module

@@ -10,25 +10,10 @@ PYTHON_INTERPRETER = python
 # COMMANDS                                                                      #
 #################################################################################
 
-{% if cookiecutter.dependency_file != 'none' %}
 ## Install Python dependencies
 .PHONY: requirements
 requirements:
-	{% if "requirements.txt" == cookiecutter.dependency_file -%}
-	{% if "uv" == cookiecutter.environment_manager -%}
-	uv pip install pip
-	uv pip install -r requirements.txt
-	{% else -%}
-	$(PYTHON_INTERPRETER) -m pip install -U pip
-	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
-	{% endif -%}
-	{% elif "environment.yml" == cookiecutter.dependency_file -%}
-	conda env update --name $(PROJECT_NAME) --file environment.yml --prune
-	{% elif "Pipfile" == cookiecutter.dependency_file -%}
-	pipenv install
-	{% endif %}
-{% endif %}
-
+	uv sync
 
 ## Delete all compiled Python files
 .PHONY: clean
@@ -36,31 +21,16 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-{% if cookiecutter.linting_and_formatting == 'ruff' %}
 ## Lint using ruff (use `make format` to do formatting)
 .PHONY: lint
 lint:
-	ruff check {{ cookiecutter.module_name }}
+	uv run ruff check {{ cookiecutter.module_name }}
 
 ## Format source code with ruff
 .PHONY: format
 format:
-	ruff check --fix {{ cookiecutter.module_name }}
-	ruff format {{ cookiecutter.module_name }}
-{% elif cookiecutter.linting_and_formatting == 'flake8+black+isort' %}
-## Lint using flake8, black, and isort (use `make format` to do formatting)
-.PHONY: lint
-lint:
-	flake8 {{ cookiecutter.module_name }}
-	isort --check --diff {{ cookiecutter.module_name }}
-	black --check {{ cookiecutter.module_name }}
-
-## Format source code with black
-.PHONY: format
-format:
-	isort {{ cookiecutter.module_name }}
-	black {{ cookiecutter.module_name }}
-{% endif %}
+	uv run ruff check --fix {{ cookiecutter.module_name }}
+	uv run ruff format {{ cookiecutter.module_name }}
 
 {% if not cookiecutter.dataset_storage.none %}
 ## Download Data from storage system
@@ -90,30 +60,13 @@ sync_data_up:
 	{% endif %}
 {% endif %}
 
-{% if cookiecutter.environment_manager != 'none' %}
 ## Set up Python interpreter environment
 .PHONY: create_environment
 create_environment:
-	{% if cookiecutter.environment_manager == 'conda' -%}
-	{% if cookiecutter.dependency_file != 'environment.yml' %}
-	conda create --name $(PROJECT_NAME) python=$(PYTHON_VERSION) -y
-	{% else -%}
-	conda env create --name $(PROJECT_NAME) -f environment.yml
-	{% endif %}
-	@echo ">>> conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
-	{% elif cookiecutter.environment_manager == 'virtualenv' -%}
-	@bash -c "if [ ! -z `which virtualenvwrapper.sh` ]; then source `which virtualenvwrapper.sh`; mkvirtualenv $(PROJECT_NAME) --python=$(PYTHON_INTERPRETER); else mkvirtualenv.bat $(PROJECT_NAME) --python=$(PYTHON_INTERPRETER); fi"
-	@echo ">>> New virtualenv created. Activate with:\nworkon $(PROJECT_NAME)"
-	{% elif cookiecutter.environment_manager == 'pipenv' -%}
-	pipenv --python $(PYTHON_VERSION)
-	@echo ">>> New pipenv created. Activate with:\npipenv shell"
-	{% elif cookiecutter.environment_manager == 'uv' -%}
 	uv venv --python $(PYTHON_VERSION)
 	@echo ">>> New uv virtual environment created. Activate with:"
 	@echo ">>> Windows: .\\\\.venv\\\\Scripts\\\\activate"
 	@echo ">>> Unix/macOS: source ./.venv/bin/activate"
-	{% endif %}
-{% endif %}
 
 
 #################################################################################

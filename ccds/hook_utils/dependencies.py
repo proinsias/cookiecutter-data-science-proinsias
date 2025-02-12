@@ -3,12 +3,6 @@ packages = [
     "python-dotenv",
 ]
 
-flake8_black_isort = [
-    "black",
-    "flake8",
-    "isort",
-]
-
 ruff = ["ruff"]
 
 basic = [

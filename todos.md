@@ -1,0 +1,1 @@
+- my copier-python-template 

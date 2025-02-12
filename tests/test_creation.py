@@ -118,9 +118,6 @@ def verify_files(root, config):
     if not config["open_source_license"].startswith("No license"):
         expected_files.append("LICENSE")
 
-    if config["linting_and_formatting"] == "flake8+black+isort":
-        expected_files.append("setup.cfg")
-
     if config["include_code_scaffold"] == "Yes":
         expected_files += [
             f"{config['module_name']}/config.py",
@@ -196,13 +193,8 @@ def verify_makefile_commands(root, config):
     assert "clean                    Delete all compiled Python files" in stdout_output
 
     # Check that linting and formatting ran successfully
-    if config["linting_and_formatting"] == "ruff":
-        assert "All checks passed!" in stdout_output
-        assert "left unchanged" in stdout_output
-        assert "reformatted" not in stdout_output
-    elif config["linting_and_formatting"] == "flake8+black+isort":
-        assert "All done!" in stderr_output
-        assert "left unchanged" in stderr_output
-        assert "reformatted" not in stderr_output
+    assert "All checks passed!" in stdout_output
+    assert "left unchanged" in stdout_output
+    assert "reformatted" not in stdout_output
 
     assert result.returncode == 0
