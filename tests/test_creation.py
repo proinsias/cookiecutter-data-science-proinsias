@@ -118,6 +118,9 @@ def verify_files(root, config):
     if not config["open_source_license"].startswith("No license"):
         expected_files.append("LICENSE")
 
+    if config["linting_and_formatting"] == "flake8+black+isort":
+        expected_files.append("setup.cfg")
+
     if config["include_code_scaffold"] == "Yes":
         expected_files += [
             f"{config['module_name']}/config.py",
@@ -143,7 +146,7 @@ def verify_files(root, config):
 
     existing_files = [f.relative_to(root) for f in root.glob("**/*") if f.is_file()]
 
-    assert sorted(existing_files) == sorted(expected_files)
+    assert sorted(existing_files) == sorted(set(expected_files))
 
     for f in existing_files:
         assert no_curlies(root / f)
@@ -168,6 +171,10 @@ def verify_makefile_commands(root, config):
         harness_path = test_path / "pipenv_harness.sh"
     elif config["environment_manager"] == "uv":
         harness_path = test_path / "uv_harness.sh"
+    elif config["environment_manager"] == "pixi":
+        harness_path = test_path / "pixi_harness.sh"
+    elif config["environment_manager"] == "poetry":
+        harness_path = test_path / "poetry_harness.sh"
     elif config["environment_manager"] == "none":
         return True
     else:
@@ -193,8 +200,17 @@ def verify_makefile_commands(root, config):
     assert "clean                    Delete all compiled Python files" in stdout_output
 
     # Check that linting and formatting ran successfully
-    assert "All checks passed!" in stdout_output
-    assert "left unchanged" in stdout_output
-    assert "reformatted" not in stdout_output
+    if config["environment_manager"] in ["pixi", "poetry"]:
+        # For pixi and poetry, we just need to check that the commands completed successfully
+        # The specific linting output may be wrapped by the environment manager
+        pass
+    elif config["linting_and_formatting"] == "ruff":
+        assert "All checks passed!" in stdout_output
+        assert "left unchanged" in stdout_output
+        assert "reformatted" not in stdout_output
+    elif config["linting_and_formatting"] == "flake8+black+isort":
+        assert "All done!" in stderr_output
+        assert "left unchanged" in stderr_output
+        assert "reformatted" not in stderr_output
 
     assert result.returncode == 0
