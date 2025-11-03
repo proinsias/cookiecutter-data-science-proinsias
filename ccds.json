@@ -11,36 +11,12 @@
         {"s3": {"bucket": "bucket-name", "aws_profile": "default"}},
         {"gcs": {"bucket": "bucket-name"}}
     ],
-    "environment_manager": [
-        "virtualenv",
-        "conda",
-        "pipenv",
-        "uv",
-        "pixi",
-        "poetry",
-        "none"
-    ],
-    "dependency_file": [
-        "requirements.txt",
-        "pyproject.toml",
-        "environment.yml",
-        "Pipfile",
-        "pixi.toml"
-    ],
-    "pydata_packages": [
-        "none",
-        "basic"
-    ],
-    "testing_framework": [
-        "none",
-        "pytest",
-        "unittest"
-    ],
-    "linting_and_formatting": [
-        "ruff",
-        "flake8+black+isort"
-    ],
+    "environment_manager": "uv",
+    "dependency_file": "pyproject.toml",
+    "pydata_packages": "basic",
+    "testing_framework": "pytest",
+    "linting_and_formatting": "ruff",
     "open_source_license": ["No license file", "MIT", "BSD-3-Clause"],
-    "docs": ["mkdocs", "none"],
-    "include_code_scaffold": ["Yes", "No"]
+    "docs": "mkdocs",
+    "include_code_scaffold": "Yes"
 }

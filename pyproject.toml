@@ -43,6 +43,7 @@ dev = [
     "pexpect",
     "pipenv",
     "pytest",
+    "ruff",
     "termynal",
     "twine",
     "uv",

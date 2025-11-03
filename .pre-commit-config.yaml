@@ -14,6 +14,11 @@ default_install_hook_types:
     - post-rewrite
 
 repos:
+    - repo: https://github.com/tsvikas/sync-with-uv
+      rev: v0.4.0  # replace with the latest version
+      hooks:
+          - id: sync-with-uv
+
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v5.0.0
       hooks:
@@ -32,9 +37,6 @@ repos:
           - id: fix-byte-order-marker
           - id: mixed-line-ending # Replaces or checks mixed line ending.
           - id: trailing-whitespace
-          - id: no-commit-to-branch # Protect specific branches from direct checkins.
-            # Both master and main are protected by default if no branch argument is set.
-            # args: [--branch, master, --branch, develop]
 
           # Json
           - id: check-json
@@ -51,18 +53,10 @@ repos:
     # General
 
     - repo: https://github.com/lycheeverse/lychee.git
-      rev: v0.15.1
+      rev: nightly
       hooks:
           - id: lychee
             args: ["--cache", "--suggest"]
-          # Optionally include additional CLI arguments
-          # args: ["--no-progress", "--exclude", "file://"]
-
-    - repo: https://github.com/sirosen/texthooks
-      rev: 0.6.7
-      hooks:
-          - id: fix-smartquotes
-          - id: fix-ligatures
 
     - repo: https://github.com/pre-commit/mirrors-prettier
       rev: v4.0.0-alpha.8
@@ -78,7 +72,7 @@ repos:
           - id: gitlint
 
     - repo: https://github.com/commitizen-tools/commitizen
-      rev: v3.29.1
+      rev: v4.8.3
       hooks:
           - id: commitizen
             stages: [commit-msg]
@@ -93,12 +87,12 @@ repos:
                 - --verbose
 
     - repo: https://github.com/ikamensh/flynt/
-      rev: "1.0.1"
+      rev: "1.0.6"
       hooks:
           - id: flynt
 
     - repo: https://github.com/dosisod/refurb
-      rev: v2.0.0
+      rev: v2.1.0
       hooks:
           - id: refurb
 
@@ -115,34 +109,34 @@ repos:
           - id: auto-walrus
 
     - repo: https://github.com/RobertCraigie/pyright-python
-      rev: v1.1.385
+      rev: v1.1.403
       hooks:
           - id: pyright
 
     - repo: https://github.com/asottile/add-trailing-comma
-      rev: v3.1.0
+      rev: v3.2.0
       hooks:
           - id: add-trailing-comma
             args:
                 - --py36-plus
 
     - repo: https://github.com/PyCQA/bandit
-      rev: 1.7.10
+      rev: 1.8.6
       hooks:
           - id: bandit
 
     - repo: https://github.com/asottile/dead
-      rev: v1.5.2
+      rev: v2.1.0
       hooks:
           - id: dead
 
     - repo: https://github.com/jendrikseipp/vulture
-      rev: v2.13
+      rev: v2.14
       hooks:
           - id: vulture
 
     - repo: https://github.com/hadialqattan/pycln
-      rev: v2.4.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
+      rev: v2.5.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
       hooks:
           - id: pycln
 
@@ -166,12 +160,12 @@ repos:
           - id: text-unicode-replacement-char
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v1.12.0
+      rev: v1.17.1
       hooks:
           - id: mypy
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: "v0.7.0"
+      rev: "v0.12.7"
       hooks:
           - id: ruff-check
             args: [--fix, --force-exclude, --exit-non-zero-on-fix]
@@ -182,7 +176,7 @@ repos:
     # YAML
 
     - repo: https://github.com/adrienverge/yamllint
-      rev: v1.35.1
+      rev: v1.37.1
       hooks:
           - id: yamllint
             args: [-c=.yamllint.yml]
@@ -190,7 +184,7 @@ repos:
     # SQL
 
     - repo: https://github.com/sqlfluff/sqlfluff
-      rev: 3.2.4
+      rev: 3.4.2
       hooks:
           - id: sqlfluff-lint
           # For dbt projects, this installs the dbt "extras".
@@ -212,21 +206,19 @@ repos:
     - repo: https://github.com/jumanjihouse/pre-commit-hooks
       rev: 3.0.0
       hooks:
-          # - id: bundler-audit  # FIXME: Fix ruby hooks
-          # - id: check-mailmap
-          # - id: fasterer
-          # - id: forbid-binary
-          # - id: git-check  # Configure in .gitattributes
-          # - id: git-dirty  # Configure in .gitignore
-          # - id: markdownlint  # Configure in .mdlrc
-          # - id: reek
-          # - id: require-ascii
-          # - id: rubocop
           - id: script-must-have-extension
           - id: script-must-not-have-extension
+
+    - repo: https://github.com/scop/pre-commit-shfmt
+      rev: v3.12.0-2
+      hooks:
+          - id: shfmt
+
+    - repo: https://github.com/koalaman/shellcheck-precommit
+      rev: v0.11.0
+      hooks:
           - id: shellcheck
             args: [--external-sources, --format=gcc, --shell=bash]
-          - id: shfmt
 
     - repo: https://github.com/Lucas-C/pre-commit-hooks
       rev: v1.5.5
@@ -236,23 +228,43 @@ repos:
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.29.4
+      rev: 0.33.2
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
           - id: check-readthedocs
 
     - repo: https://github.com/zricethezav/gitleaks
-      rev: v8.21.1
+      rev: v8.28.0
       hooks:
           - id: gitleaks
 
     - repo: https://github.com/rhysd/actionlint
-      rev: v1.7.3
+      rev: v1.7.7
       hooks:
           - id: actionlint
 
+    - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+      rev: 3.2.1
+      hooks:
+          - id: editorconfig-checker
+
     - repo: https://github.com/MarcoGorelli/cython-lint
-      rev: v0.16.2
+      rev: v0.16.7
       hooks:
           - id: cython-lint
+
+    - repo: https://github.com/bridgecrewio/checkov/
+      rev: 3.2.458
+      hooks:
+          - id: checkov
+
+    - repo: https://codeberg.org/frnmst/md-toc
+      rev: 9.0.0
+      hooks:
+          - id: md-toc
+
+    - repo: https://github.com/igorshubovych/markdownlint-cli
+      rev: v0.45.0
+      hooks:
+          - id: markdownlint

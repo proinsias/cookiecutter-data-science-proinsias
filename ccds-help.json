@@ -113,189 +113,11 @@
         ]
     },
     {
-        "field": "environment_manager",
-        "help": {
-            "description": "Tool for managing creating Python environments. Controls `make create_environment` Makefile command.",
-            "more_information": "[About virtual environments](https://www.dataquest.io/blog/a-complete-guide-to-python-virtual-environments/)"
-        },
-        "choices": [
-            {
-                "choice": "virtualenv",
-                "help": {
-                    "description": "Simple wrapper on venv with more features.",
-                    "more_information": "[Docs](https://virtualenv.pypa.io/en/latest/)"
-                }
-            },
-            {
-                "choice": "conda",
-                "help": {
-                    "description": "Data science environments supporting non-Python dependencies as well.",
-                    "more_information": "[Docs](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)"
-                }
-            },
-            {
-                "choice": "pipenv",
-                "help": {
-                    "description": "Manages dependencies and virual environments.",
-                    "more_information": "[Docs](https://pipenv.pypa.io/en/latest/)"
-                }
-            },
-            {
-                "choice": "uv",
-                "help": {
-                    "description": "An extremely fast Python package and project manager, written in Rust.",
-                    "more_information": "[Docs](https://docs.astral.sh/uv/)"
-                }
-            },
-            {
-                "choice": "uv",
-                "help": {
-                    "description": "An extremely fast Python package and project manager, written in Rust.",
-                    "more_information": "[Docs](https://docs.astral.sh/uv/)"
-                }
-            },
-            {
-                "choice": "pixi",
-                "help": {
-                    "description": "A fast package manager built on top of the conda ecosystem with lock files for reproducible environments. Supports both pixi.toml and pyproject.toml. Requires pixi to be installed as a system binary (see docs for installation instructions).",
-                    "more_information": "[Docs](https://pixi.sh/)"
-                }
-            },
-            {
-                "choice": "poetry",
-                "help": {
-                    "description": "A dependency management and packaging tool for Python with lock files for reproducible environments. Uses pyproject.toml for configuration. Requires poetry to be installed as a system binary.",
-                    "more_information": "[Docs](https://python-poetry.org/docs/)"
-                }
-            },
-            {
-                "choice": "none",
-                "help": {
-                    "description": "Do not add `create_environment` commands; env management left to the user.",
-                    "more_information": ""
-                }
-            }
-        ]
-    },
-    {
-        "field": "dependency_file",
-        "help": {
-            "description": "Where to track project-specific dependencies; often paired with specific environment manager.",
-            "more_information": ""
-        },
-        "choices": [
-            {
-                "choice": "requirements.txt",
-                "help": {
-                    "description": "Classic format for a list of packages to be installed by `pip`.",
-                    "more_information": "[Docs](https://pip.pypa.io/en/stable/reference/requirements-file-format/)"
-                }
-            },
-            {
-                "choice": "pyproject.toml",
-                "help": {
-                    "description": "Modern configuration file for Python projects. Also supported by pixi when using tool.pixi sections.",
-                    "more_information": "[Docs](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/)"
-                }
-            },
-            {
-                "choice": "environment.yml",
-                "help": {
-                    "description": "Format used by `conda`.",
-                    "more_information": "[Docs](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#sharing-an-environment)"
-                }
-            },
-            {
-                "choice": "Pipfile",
-                "help": {
-                    "description": "Format used by Pipenv",
-                    "more_information": "[Docs](https://pipenv.pypa.io/en/latest/pipfile.html)"
-                }
-            },
-            {
-                "choice": "pixi.toml",
-                "help": {
-                    "description": "Configuration file used by pixi for managing dependencies and environments.",
-                    "more_information": "[Docs](https://pixi.sh/latest/reference/pixi_manifest/)"
-                }
-            }
-        ]
-    },
-    {
         "field": "pydata_packages",
         "help": {
             "description": "Packages automatically added to your requirements file.",
             "more_information": ""
-        },
-        "choices": [
-            {
-                "choice": "none",
-                "help": {
-                    "description": "No extra packages.",
-                    "more_information": ""
-                }
-            },
-            {
-                "choice": "basic",
-                "help": {
-                    "description": "Basic common data science packages.",
-                    "more_information": ""
-                }
-            }
-        ]
-    },
-    {
-        "field": "testing_framework",
-        "help": {
-            "description": "Framework used for testing your code.",
-            "more_information": ""
-        },
-        "choices": [
-            {
-                "choice": "none",
-                "help": {
-                    "description": "No testing framework.",
-                    "more_information": ""
-                }
-            },
-            {
-                "choice": "pytest",
-                "help": {
-                    "description": "Use the pytest framework for testing.",
-                    "more_information": "[Docs](https://docs.pytest.org/en/latest/)"
-                }
-            },
-            {
-                "choice": "unittest",
-                "help": {
-                    "description": "Use Python's built-in testing framework.",
-                    "more_information": "[Docs](https://docs.python.org/3/library/unittest.html)"
-                }
-            }
-        ]
-    },
-    {
-        "field": "linting_and_formatting",
-        "help": {
-            "description": "How to handle linting and formatting on your code.",
-            "more_information": ""
-        },
-        "choices": [
-            {
-                "choice": "ruff",
-                "help": {
-                    "description": "Use ruff for linting and formatting.",
-                    "more_information": ""
-                }
-            },
-            {
-                "choice": "flake8+black+isort",
-                "help": {
-                    "description": "Use flake8 for linting and black+isort for formatting.",
-                    "more_information": ""
-                }
-            }
-        ]
+        }
     },
     {
         "field": "open_source_license",
@@ -332,45 +154,13 @@
         "help": {
             "description": "Whether to include a `docs` folder and documentation tools.",
             "more_information": ""
-        },
-        "choices": [
-            {
-                "choice": "none",
-                "help": {
-                    "description": "No `docs` folder.",
-                    "more_information": ""
-                }
-            },
-            {
-                "choice": "mkdocs",
-                "help": {
-                    "description": "Include `docs` folder and `mkdocs` tools.",
-                    "more_information": "[Docs](https://www.mkdocs.org/)"
-                }
-            }
-        ]
+        }
     },
     {
         "field": "include_code_scaffold",
         "help": {
             "description": "Whether to include some basic boilerplate code in the Python module.",
             "more_information": ""
-        },
-        "choices": [
-            {
-                "choice": "Yes",
-                "help": {
-                    "description": "Includes common data submodules.",
-                    "more_information": ""
-                }
-            },
-            {
-                "choice": "No",
-                "help": {
-                    "description": "Empty Python module to start with.",
-                    "more_information": ""
-                }
-            }
-        ]
+        }
     }
 ]
