@@ -8,6 +8,7 @@ for setting up a data science project template that incorporates best practices.
 To learn more about CCDS's philosophy,
 visit the [project homepage](https://cookiecutter-data-science.drivendata.org/).
 
+
 This project also included code from
 [cookiecutter-uv](https://github.com/fpgmaas/cookiecutter-uv).
 
@@ -74,4 +75,38 @@ The directory structure of your new project will look something like this (depen
     │   └── train.py            <- Code to train models
     │
     └── plots.py                <- Code to create visualizations   
+```
+
+## Using unreleased changes
+
+By default, `ccds` will use the _project template_ version that corresponds to the _installed `ccds` package_ version (e.g., if you have installed `ccds` v2.0.1, you'll use the v2.0.1 version of the project template by default). To use a specific version of the project template, use the `-c/--checkout` flag to provide the branch (or tag or commit hash) of the version you'd like to use. For example to use the project template from the `master` branch:
+
+```bash
+ccds -c master
+```
+
+## Using v1
+
+If you want to use the old v1 project template, you need to have either the cookiecutter-data-science package or cookiecutter package installed. Then, use either command-line program with the `-c v1` option:
+
+```bash
+ccds https://github.com/drivendataorg/cookiecutter-data-science -c v1
+# or equivalently
+cookiecutter https://github.com/drivendataorg/cookiecutter-data-science -c v1
+```
+
+## Contributing
+
+We welcome contributions! [See the docs for guidelines](https://cookiecutter-data-science.drivendata.org/contributing/).
+
+### Installing development requirements
+
+```bash
+pip install -r dev-requirements.txt
+```
+
+### Running the tests
+
+```bash
+pytest tests
 ```

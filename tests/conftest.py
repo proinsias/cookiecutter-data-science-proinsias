@@ -52,6 +52,21 @@ def config_generator(fast=False):
             config["environment_manager"] != "conda"
         ):
             return False
+        # pixi is the only valid env manager for pixi.toml
+        if (config["dependency_file"] == "pixi.toml") and (
+            config["environment_manager"] != "pixi"
+        ):
+            return False
+        # pixi supports both pixi.toml and pyproject.toml
+        if (config["environment_manager"] == "pixi") and (
+            config["dependency_file"] not in ["pixi.toml", "pyproject.toml"]
+        ):
+            return False
+        # poetry only supports pyproject.toml
+        if (config["environment_manager"] == "poetry") and (
+            config["dependency_file"] != "pyproject.toml"
+        ):
+            return False
         return True
 
     # remove invalid configs
@@ -124,9 +139,14 @@ def fast(request):
 
 def pytest_generate_tests(metafunc):
     # setup config fixture to get all of the results from config_generator
+    def make_test_id(config):
+        return f"{config['environment_manager']}-{config['dependency_file']}-{config['pydata_packages']}"
+
     if "config" in metafunc.fixturenames:
         metafunc.parametrize(
-            "config", config_generator(metafunc.config.getoption("fast"))
+            "config",
+            config_generator(metafunc.config.getoption("fast")),
+            ids=make_test_id,
         )
 
 

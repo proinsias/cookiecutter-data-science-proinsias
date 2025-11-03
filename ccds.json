@@ -16,16 +16,29 @@
         "conda",
         "pipenv",
         "uv",
+        "pixi",
+        "poetry",
         "none"
     ],
     "dependency_file": [
         "requirements.txt",
+        "pyproject.toml",
         "environment.yml",
-        "Pipfile"
+        "Pipfile",
+        "pixi.toml"
     ],
     "pydata_packages": [
         "none",
         "basic"
+    ],
+    "testing_framework": [
+        "none",
+        "pytest",
+        "unittest"
+    ],
+    "linting_and_formatting": [
+        "ruff",
+        "flake8+black+isort"
     ],
     "open_source_license": ["No license file", "MIT", "BSD-3-Clause"],
     "docs": ["mkdocs", "none"],

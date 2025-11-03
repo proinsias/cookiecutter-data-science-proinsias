@@ -2,9 +2,12 @@
 
 _A logical, flexible, and reasonably standardized project structure for doing and sharing data science work._
 
+![PyPI - Version](https://img.shields.io/pypi/v/cookiecutter-data-science)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cookiecutter-data-science)
 <a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
     <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
 </a>
+[![tests](https://github.com/drivendataorg/cookiecutter-data-science/actions/workflows/tests.yml/badge.svg)](https://github.com/drivendataorg/cookiecutter-data-science/actions/workflows/tests.yml)
 
 !!! info "CCDS V2 Announcement"
 
@@ -13,7 +16,7 @@ _A logical, flexible, and reasonably standardized project structure for doing an
 
 ## Quickstart
 
-Cookiecutter Data Science v2 requires Python 3.8+. Since this is a cross-project utility application, we recommend installing it with [pipx](https://pypa.github.io/pipx/). Installation command options:
+Cookiecutter Data Science v2 requires Python 3.9+. Since this is a cross-project utility application, we recommend installing it with [pipx](https://pypa.github.io/pipx/). Installation command options:
 
 === "With pipx (recommended)"
 

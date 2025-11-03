@@ -1,7 +1,10 @@
 [project]
 name = "cookiecutter-data-science-proinsias"
-version = "2.0.0"
+version = "2.3.0"
 description = "A customized, logical, reasonably standardized but flexible project structure for doing and sharing data science work."
+authors = [
+  { name = "DrivenData", email = "info@drivendata.org" },
+]
 license = { file = "LICENSE" }
 readme = "README.md"
 classifiers = [
@@ -10,18 +13,19 @@ classifiers = [
   "Intended Audience :: Science/Research",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Scientific/Engineering",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = [
   "click",
   "cookiecutter",
+  "tomlkit",
 ]
 
 [dependency-groups]
