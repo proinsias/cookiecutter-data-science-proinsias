@@ -15,7 +15,7 @@ default_install_hook_types:
 
 repos:
     - repo: https://github.com/tsvikas/sync-with-uv
-      rev: v0.4.0  # replace with the latest version
+      rev: v0.4.0 # replace with the latest version
       hooks:
           - id: sync-with-uv
 
@@ -165,7 +165,7 @@ repos:
           - id: mypy
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: "v0.12.7"
+      rev: v0.14.3
       hooks:
           - id: ruff-check
             args: [--fix, --force-exclude, --exit-non-zero-on-fix]
@@ -258,11 +258,6 @@ repos:
       rev: 3.2.458
       hooks:
           - id: checkov
-
-    - repo: https://codeberg.org/frnmst/md-toc
-      rev: 9.0.0
-      hooks:
-          - id: md-toc
 
     - repo: https://github.com/igorshubovych/markdownlint-cli
       rev: v0.45.0

@@ -11,6 +11,25 @@ uvx --from md-toc md_toc --in-place github -- README.md
 -->
 <!--TOC-->
 
+-   [My Data Science Cookiecutter](#my-data-science-cookiecutter)
+    -   [Installation](#installation)
+    -   [Starting a new project](#starting-a-new-project)
+        -   [Additional tools](#additional-tools)
+
+<!--TOC-->
+
+-   [My Data Science Cookiecutter](#my-data-science-cookiecutter)
+    -   [Installation](#installation)
+    -   [Starting a new project](#starting-a-new-project)
+        -   [Additional tools](#additional-tools)
+
+<!--TOC-->
+
+-   [My Data Science Cookiecutter](#my-data-science-cookiecutter)
+    -   [Installation](#installation)
+    -   [Starting a new project](#starting-a-new-project)
+        -   [Additional tools](#additional-tools)
+
 <!--TOC-->
 
 ## Installation
