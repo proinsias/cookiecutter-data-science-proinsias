@@ -156,7 +156,7 @@ testpaths = ["tests"]
 # n auto: Use all CPUs for parallel processing.
 # profile: generate code profile via pytest_profiling plugin.
 # verbose: increase verbosity.
-addopts = --doctest-modules --durations=0 --durations-min=1.0 -n auto --profile --verbose
+addopts = "--doctest-modules --durations=0 --durations-min=1.0 -n auto --profile --verbose"
 # Enable log display during test run.
 log_cli = true
 # testpaths = []
