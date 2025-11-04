@@ -1,5 +1,3 @@
-# Data Science Project
-
 # {{cookiecutter.project_name}}
 
 {{cookiecutter.description}}
@@ -10,9 +8,9 @@ uvx --from md-toc md_toc --in-place github -- README.md
 -->
 <!--TOC-->
 
--   [Data Science Project](#data-science-project)
--   [{{cookiecutter.project_name}}](#cookiecutterproject_name)
-    -   [Project Organization](#project-organization)
+- [Data Science Project](#data-science-project)
+- [{{cookiecutter.project_name}}](#cookiecutterproject_name)
+  - [Project Organization](#project-organization)
 
 <!--TOC-->
 
@@ -25,13 +23,13 @@ uvx --from md-toc md_toc --in-place github -- README.md
 │
 ├── bin                <- Useful scripts.
 │
-├── data               <- Shared data directory.
+├── data               <- Shared data directory. By default, not kept in version control.
 │   ├── external       <- Data from third party sources.
 │   ├── interim        <- Intermediate data that has been transformed.
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, immutable data dump.
 │
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+├── docs               <- A default mkdocs project; see www.mkdocs.org for details.
 │
 └── projects
     │
@@ -43,48 +41,50 @@ uvx --from md-toc md_toc --in-place github -- README.md
     │   └── tests
     │
     └── project-1
-        ├── pyproject.toml (ds-playground/projects/gilbert-shannon-reeds/pyproject.toml)
-        ├── README.md (mermaid from ds-playground/projectsdisease-risk-prediction/README.md)
+        ├── pyproject.toml
+        ├── README.md
         │
-        ├── data               <- Project specific data directory.
+        ├── data             <- Project specific data directory. By default, not kept in version control.
         │   │
-        │   ├── external       <- Data from third party sources.
+        │   ├── external     <- Data from third party sources.
         │   │
-        │   ├── interim        <- Intermediate data that has been transformed.
+        │   ├── interim      <- Intermediate data that has been transformed.
         │   │
-        │   ├── processed      <- The final, canonical data sets for modeling.
+        │   ├── processed    <- The final, canonical data sets for modeling.
         │   │
-        │   └── raw            <- The original, immutable data dump.
+        │   └── raw          <- The original, immutable data dump.
         │
-        ├── models               <- Project specific models directory for Trained and serialized  models.  (cookiecutter-data-science-proinsias)
+        ├── models           <- Project specific models directory for trained and serialized models. By default, not kept in version control.
         │
-        ├── notebooks               <- Project specific notebooks directory. (cookiecutter-data-science-proinsias)
-        │   └── 1.0-jqp-initial-data-exploration.py  <- Jupyter notebooks in percent? format. Naming  convention is a number (for ordering),
-        │       the creator's initials, and a short `-` delimited description.
+        ├── notebooks        <- Project specific notebooks directory.
+        │   └── 1.0-ftod-example.py  <- Jupyter notebooks in percent format.
         │
-        ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+        ├── references       <- Data dictionaries, manuals, and all other explanatory materials.
         │
-        ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-        │   └── figures        <- Generated graphics and figures to be used in reporting
+        ├── reports          <- Generated analysis as HTML, PDF, LaTeX, etc.
+        │   │
+        │   └── figures      <- Generated graphics and figures to be used in reporting.
         │
         ├── tests
+        │    │
+        │    ├── ds_utils    <- Tests of shared-specific source code.
+        │    │
+        │    └── project_1   <- Tests of project-specific source code.
         │
-        └── project_1 (Project specific source code. ds-playground/projects/disease-risk-prediction/ disease_risk_prediction)
-            │
+        └── project_1        <- Project-specific source code.
             ├── __init__.py
+            ├── config.py    <- Store useful variables and configuration.
+            ├── dataset.py   <- Scripts to download or generate data.
+            ├── features.py  <- Code to create features for modeling.
+            ├── plots.py     <- Code to create visualizations.
             │
-            ├── config.py               <- Store useful variables and configuration  cookiecutter-data-science-proinsias)
-            │
-            ├── dataset.py              <- Scripts to download or generate data  cookiecutter-data-science-proinsias)
-            │
-            ├── features.py             <- Code to create features for modeling cookiecutter-data-science-proinsias)
-            │
-            ├── modeling
-            │   ├── __init__.py
-            │   ├── predict.py          <- Code to run model inference with trained models       (cookiecutter-data-science-proinsias)
-            │   └── train.py            <- Code to train models (cookiecutter-data-science-proinsias)
-            │
-            │
-            └── plots.py                <- Code to create visualizations   (cookiecutter-data-science-proinsias)
+            └── modeling                
+                ├── __init__.py 
+                ├── predict.py  <- Code to run model inference with trained models.
+                └── train.py    <- Code to train models.│
+             
 
 ```
+
+The naming convention for notebooks is a number (for ordering),
+the creator's initials, and a short `-` delimited description.

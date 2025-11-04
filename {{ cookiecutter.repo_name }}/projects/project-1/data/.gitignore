@@ -1,0 +1,6 @@
+.*
+!.gitignore
+!external
+!interim
+!processed
+!raw

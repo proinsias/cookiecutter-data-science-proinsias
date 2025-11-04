@@ -1,10 +1,8 @@
 [project]
-name = "project_name"
+name = "project-1"
 version = "0.0.1"
 description = "A short description of the project."
-authors = [
-  { name = "Your name (or your organization/company/team)" },
-]
+authors = ["Francis T. O'Donovan <proinsias@users.noreply.github.com>"]
 
 readme = "README.md"
 classifiers = [

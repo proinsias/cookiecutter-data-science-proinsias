@@ -1,12 +1,11 @@
-docs <- A default mkdocs project; see www.mkdocs.org for details
+TEST!!! add tests.
 
-ADD IN MAIN MODULE - AS PER BACKEND CODE! AND INCLUDE REFERENCE TO THIS IN PROJECT.
-Actually just talk about how to reference to module in another folder.
+use cookiecutter sample code in example.
 
 add quarto support and example pipeline. save to reports/figures.
 
-markdown linter?
+Talk about how to reference to module in another folder.
 
-Update README.md in project dir.
+docs <- A default mkdocs project; see www.mkdocs.org for details
 
-TEST!!! add tests.
+create ftod-ds-utils project and use here!
