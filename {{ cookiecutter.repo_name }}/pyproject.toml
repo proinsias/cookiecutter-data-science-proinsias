@@ -168,7 +168,7 @@ log_cli = true
 comma_style = "leading"
 # tab_space_size = 2
 
-[tool.sqlfluff:rules.L010]
+[tool.sqlfluff.rules.L010]
 # capitalisation_policy = lower
 
 [tool.sqlfluff.rules.L052]
