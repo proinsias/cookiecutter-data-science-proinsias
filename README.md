@@ -5,6 +5,14 @@ but flexible project structure for doing and sharing data science work.
 
 Based on [Cookiecutter Data Science (CCDS)](https://cookiecutter-data-science.drivendata.org/).
 
+<!--
+Table of contents updated via:
+uvx --from md-toc md_toc --in-place github -- README.md
+-->
+<!--TOC-->
+
+<!--TOC-->
+
 ## Installation
 
 ```bash
@@ -18,10 +26,6 @@ To start a new project, run:
 ```bash
 ccds https://github.com/proinsias/cookiecutter-data-science-proinsias
 ```
-
-### The resulting directory structure
-
-FIXME: POINT TO OTHER README.MD
 
 ### Additional tools
 
