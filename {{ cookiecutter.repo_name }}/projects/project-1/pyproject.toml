@@ -1,40 +1,198 @@
 [project]
-name = "Project 1"
-version = "0.1.0"
-description = "Project 1."
-readme = "README.md"
-requires-python = ">=3.10"
-dependencies = [
-    "pandas>=2.2.3",
+name = "project_name"
+version = "0.0.1"
+description = "A short description of the project."
+authors = [
+  { name = "Your name (or your organization/company/team)" },
 ]
 
-[build-system]
-# Needed to ensure uv sync will auto-add the project as editable dependency.
-requires = ["setuptools>=42"]
-build-backend = "setuptools.build_meta"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+
+]
+requires-python = "~=3.10.0"
+dependencies = [
+    "ipyparallel",
+    "ipython",
+    "jupyterlab",
+    "jupyter_nbextensions_configurator",
+    "jupytext",
+    "loguru",
+    "matplotlib",
+    "mkdocs",
+    "nbdime",
+    "notebook",
+    "numpy",
+    "pandas",
+    "pip",
+    "pytest",
+    "python-dotenv",
+    "ruff",
+    "scikit-learn",
+    "tqdm",
+    "typer",
+]
+
 
 [dependency-groups]
 dev = [
-    "project-1",
-    "ipykernel>=6.29.5",
-    "ipyparallel>=9.0.0",
-    "ipython>=8.32.0",
-    "jupyter-nbextensions-configurator>=0.6.4",
-    "jupyterlab>=4.3.5",
-    "jupytext>=1.16.7",
-    "nbdime>=4.0.2",
-    "pandas-stubs>=2.2.3.241126",
-    "ydata-profiling>=4.12.2",
+    "absolufy-imports",
+    "add-trailing-comma",
+    "auto-walrus",
+    "darglint",
+    "deptry>=0.22.0",
+    "flynt",
+    "gitlint",
+    "mkdocs-material>=8.5.10",
+    "mkdocs>=1.4.2",
+    "mkdocstrings[python]>=0.26.1",
+    "mypy>=0.991",
+    "poethepoet",
+    "pre-commit>=2.20.0",
+    "pycln",
+    "pytest-black",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.8.2",
+    "pytest-profiling",
+    "pytest-sugar",
+    "pytest-xdist",
+    "pytest>=7.2.0",
+    "refurb",
+    "ruff>=0.9.2",
+    "sqlfluff",
+    "texthooks",
+    "tox-uv>=1.11.3",
+    "vulture",
 ]
 
-[tool.jupytext]
-formats = "ipynb,py:percent"
+[tool.bandit]
+# exclude_dirs = [".venv", "shared"]
+
+[tool.bandit.assert_used]
+# skips = ['*_test.py', '*test_*.py', '*unittest.py']
+
+[tool.darglint]
+docstring_style = 'google'  # Default. Alternatives are 'sphinx' and 'numpy'.
+strictness = 'full'  # Default. Alternatives are 'short' and 'long'.
+
+[tool.docformatter]
+recursive = true
+wrap-descriptions = 120
+wrap-summaries = 120
 
 [tool.mypy]
-plugins = ["pydantic.mypy"]
+python_version = "3.10"
 
-[tool.setuptools]
-packages = ["project_1"]
+check_untyped_defs = true
+disallow_any_decorated = false
+disallow_any_explicit = false
+# disallow_any_expr = true
+disallow_any_generics = true
+disallow_any_unimported = false
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+# disallow_untyped_decorators = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+no_implicit_optional = true
+# pretty = true
+# show_column_numbers = true
+# show_error_codes = true
+# show_error_context = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
 
-[tool.uv.sources]
-project-1 = { workspace = true }
+# linecoverage_report = "coverage_mypy-json"
+# linecount_report = "coverage_mypy-txt"
+html_report = "releases/tests/mypy_html"
+# any_exprs_report = "coverage_mypy_any-txt"
+
+[tool.ruff]
+line-length = 99
+src = ["project_name"]
+include = ["pyproject.toml", "project_name/**/*.py"]
+builtins = ["_"]
+
+# Avoiding flagging (and removing) `V101` from any `# noqa`
+# directives, despite Ruff's lack of support for `vulture`.
+external = ["V101"]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# target-version = "py38"
+
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
+
+[tool.ruff.lint.isort]
+known-first-party = ["project_name"]
+force-sort-within-sections = true
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 88  # Black.
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"  # Accepts: "google", "numpy", or "pep257".
+
+[tool.ruff.lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Add command line options to pytest.
+# doctest-modules: run doctests from docstrings in all python modules.
+# durations: print duration of slowest tests.
+# n auto: Use all CPUs for parallel processing.
+# profile: generate code profile via pytest_profiling plugin.
+# verbose: increase verbosity.
+addopts = "--doctest-modules --durations=0 --durations-min=1.0 -n auto --profile --verbose"
+# Enable log display during test run.
+log_cli = true
+# testpaths = []
+
+[tool.sqlfluff.core]
+# dialect = "mysql"
+
+[tool.sqlfluff.rules]
+comma_style = "leading"
+# tab_space_size = 2
+
+[tool.sqlfluff.rules.L010]
+# capitalisation_policy = lower
+
+[tool.sqlfluff.rules.L052]
+# Semi-colon formatting approach
+multiline_newline = true
+require_final_semicolon = true

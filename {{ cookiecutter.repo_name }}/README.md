@@ -10,9 +10,9 @@ uvx --from md-toc md_toc --in-place github -- README.md
 -->
 <!--TOC-->
 
-- [Data Science Project](#data-science-project)
-- [{{cookiecutter.project_name}}](#cookiecutterproject_name)
-  - [Project Organization](#project-organization)
+-   [Data Science Project](#data-science-project)
+-   [{{cookiecutter.project_name}}](#cookiecutterproject_name)
+    -   [Project Organization](#project-organization)
 
 <!--TOC-->
 
@@ -20,7 +20,6 @@ uvx --from md-toc md_toc --in-place github -- README.md
 
 ```shell
 ├── LICENSE            <- Open-source license if one is chosen.
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`.
 ├── pyproject.toml     <- Project configuration file with configuration for tools like ruff.
 │── README.md          <- The top-level README for developers using this project.
 │
@@ -80,9 +79,9 @@ uvx --from md-toc md_toc --in-place github -- README.md
             │
             ├── features.py             <- Code to create features for modeling cookiecutter-data-science-proinsias)
             │
-            ├── modeling                
-            │   ├── __init__.py 
-            │   ├── predict.py          <- Code to run model inference with trained models       (cookiecutter-data-science-proinsias)    
+            ├── modeling
+            │   ├── __init__.py
+            │   ├── predict.py          <- Code to run model inference with trained models       (cookiecutter-data-science-proinsias)
             │   └── train.py            <- Code to train models (cookiecutter-data-science-proinsias)
             │
             │
