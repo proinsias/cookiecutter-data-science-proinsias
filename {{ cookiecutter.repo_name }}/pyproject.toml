@@ -179,3 +179,8 @@ comma_style = "leading"
 # Semi-colon formatting approach
 multiline_newline = true
 require_final_semicolon = true
+
+[tool.uv.workspace]
+exclude = [
+    "projects/*",
+]

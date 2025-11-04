@@ -13,6 +13,7 @@ classifiers = [
 ]
 requires-python = "~=3.10.0"
 dependencies = [
+    "ds-utils",
     "ipyparallel",
     "ipython",
     "jupyterlab",
@@ -34,6 +35,10 @@ dependencies = [
     "typer",
 ]
 
+[build-system]
+# Needed to ensure uv sync will auto-add the project as editable dependency.
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 dev = [
@@ -50,6 +55,7 @@ dev = [
     "mypy>=0.991",
     "poethepoet",
     "pre-commit>=2.20.0",
+    "project-1",
     "pycln",
     "pytest-black",
     "pytest-cov>=4.0.0",
@@ -182,6 +188,9 @@ addopts = "--doctest-modules --durations=0 --durations-min=1.0 -n auto --profile
 log_cli = true
 # testpaths = []
 
+[tool.setuptools]
+packages = ["project_1"]
+
 [tool.sqlfluff.core]
 # dialect = "mysql"
 
@@ -196,3 +205,7 @@ comma_style = "leading"
 # Semi-colon formatting approach
 multiline_newline = true
 require_final_semicolon = true
+
+[tool.uv.sources]
+ds-utils = { path = "../ds-utils", editable = true }
+project-1 = { workspace = true }
