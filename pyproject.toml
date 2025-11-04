@@ -2,9 +2,6 @@
 name = "cookiecutter-data-science-proinsias"
 version = "1.0.0"
 description = "A customized, logical, reasonably standardized but flexible project structure for doing and sharing data science work."
-authors = [
-  { name = "Francis T. O'Donovan", email = "proinsias@users.noreply.github.com" },
-]
 license = { file = "LICENSE" }
 readme = "README.md"
 classifiers = [
