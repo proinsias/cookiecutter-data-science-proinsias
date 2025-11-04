@@ -43,7 +43,7 @@ uv tool install cookiecutter-data-science
 To start a new project, run:
 
 ```bash
-ccds https://github.com/proinsias/cookiecutter-data-science-proinsias
+ccds --checkout master https://github.com/proinsias/cookiecutter-data-science-proinsias
 ```
 
 ### Additional tools
