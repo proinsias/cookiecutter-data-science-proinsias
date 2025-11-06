@@ -15,7 +15,7 @@ default_install_hook_types:
 
 repos:
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v5.0.0
+      rev: v6.0.0
       hooks:
           # General
           - id: check-added-large-files
@@ -51,7 +51,7 @@ repos:
     # General
 
     - repo: https://github.com/lycheeverse/lychee.git
-      rev: v0.15.1
+      rev: nightly
       hooks:
           - id: lychee
             args: ["--cache", "--suggest"]
@@ -59,7 +59,7 @@ repos:
           # args: ["--no-progress", "--exclude", "file://"]
 
     - repo: https://github.com/sirosen/texthooks
-      rev: 0.6.7
+      rev: 0.7.1
       hooks:
           - id: fix-smartquotes
           - id: fix-ligatures
@@ -78,7 +78,7 @@ repos:
           - id: gitlint
 
     - repo: https://github.com/commitizen-tools/commitizen
-      rev: v3.29.1
+      rev: v4.9.1
       hooks:
           - id: commitizen
             stages: [commit-msg]
@@ -93,12 +93,12 @@ repos:
                 - --verbose
 
     - repo: https://github.com/ikamensh/flynt/
-      rev: "1.0.1"
+      rev: "1.0.6"
       hooks:
           - id: flynt
 
     - repo: https://github.com/dosisod/refurb
-      rev: v2.0.0
+      rev: v2.2.0
       hooks:
           - id: refurb
 
@@ -115,34 +115,34 @@ repos:
           - id: auto-walrus
 
     - repo: https://github.com/RobertCraigie/pyright-python
-      rev: v1.1.385
+      rev: v1.1.407
       hooks:
           - id: pyright
 
     - repo: https://github.com/asottile/add-trailing-comma
-      rev: v3.1.0
+      rev: v4.0.0
       hooks:
           - id: add-trailing-comma
             args:
                 - --py36-plus
 
     - repo: https://github.com/PyCQA/bandit
-      rev: 1.7.10
+      rev: 1.8.6
       hooks:
           - id: bandit
 
     - repo: https://github.com/asottile/dead
-      rev: v1.5.2
+      rev: v2.1.0
       hooks:
           - id: dead
 
     - repo: https://github.com/jendrikseipp/vulture
-      rev: v2.13
+      rev: v2.14
       hooks:
           - id: vulture
 
     - repo: https://github.com/hadialqattan/pycln
-      rev: v2.4.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
+      rev: v2.6.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
       hooks:
           - id: pycln
 
@@ -166,12 +166,12 @@ repos:
           - id: text-unicode-replacement-char
 
     - repo: https://github.com/pre-commit/mirrors-mypy
-      rev: v1.12.0
+      rev: v1.18.2
       hooks:
           - id: mypy
 
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: "v0.7.0"
+      rev: "v0.14.3"
       hooks:
           - id: ruff-check
             args: [--fix, --force-exclude, --exit-non-zero-on-fix]
@@ -182,7 +182,7 @@ repos:
     # YAML
 
     - repo: https://github.com/adrienverge/yamllint
-      rev: v1.35.1
+      rev: v1.37.1
       hooks:
           - id: yamllint
             args: [-c=.yamllint.yml]
@@ -190,7 +190,7 @@ repos:
     # SQL
 
     - repo: https://github.com/sqlfluff/sqlfluff
-      rev: 3.2.4
+      rev: 4.0.0a1
       hooks:
           - id: sqlfluff-lint
           # For dbt projects, this installs the dbt "extras".
@@ -212,6 +212,16 @@ repos:
     - repo: https://github.com/jumanjihouse/pre-commit-hooks
       rev: 3.0.0
       hooks:
+          # - id: bundler-audit  # FIXME: Fix ruby hooks
+          # - id: check-mailmap
+          # - id: fasterer
+          # - id: forbid-binary
+          # - id: git-check  # Configure in .gitattributes
+          # - id: git-dirty  # Configure in .gitignore
+          # - id: markdownlint  # Configure in .mdlrc
+          # - id: reek
+          # - id: require-ascii
+          # - id: rubocop
           - id: script-must-have-extension
           - id: script-must-not-have-extension
           - id: shellcheck
@@ -226,23 +236,23 @@ repos:
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.29.4
+      rev: 0.34.1
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
           - id: check-readthedocs
 
     - repo: https://github.com/zricethezav/gitleaks
-      rev: v8.21.1
+      rev: v8.29.0
       hooks:
           - id: gitleaks
 
     - repo: https://github.com/rhysd/actionlint
-      rev: v1.7.3
+      rev: v1.7.8
       hooks:
           - id: actionlint
 
     - repo: https://github.com/MarcoGorelli/cython-lint
-      rev: v0.16.2
+      rev: v0.18.1
       hooks:
           - id: cython-lint
