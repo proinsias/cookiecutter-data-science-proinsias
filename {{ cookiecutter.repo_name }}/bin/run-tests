@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Directory containing the projects, relative to this script's location
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_DIR="${SCRIPT_DIR}/.."
+PROJECTS_DIR="${REPO_DIR}/projects"
+
+PWD="$(pwd)"
+
+# Find tests directories directly under directories in the projects directory.
+find "${PROJECTS_DIR}" -mindepth 2 -maxdepth 2 -type d -name "tests" | while read -r test_dir; do
+    cd "${test_dir}/.."
+
+    uv run pytest
+
+done
+
+cd "${PWD}"

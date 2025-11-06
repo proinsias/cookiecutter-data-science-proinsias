@@ -8,9 +8,8 @@ uvx --from md-toc md_toc --in-place github -- README.md
 -->
 <!--TOC-->
 
-- [Data Science Project](#data-science-project)
-- [{{cookiecutter.project_name}}](#cookiecutterproject_name)
-  - [Project Organization](#project-organization)
+-   [{{cookiecutter.project_name}}](#cookiecutterproject_name)
+    -   [Project Organization](#project-organization)
 
 <!--TOC-->
 
@@ -66,10 +65,6 @@ uvx --from md-toc md_toc --in-place github -- README.md
         │   └── figures      <- Generated graphics and figures to be used in reporting.
         │
         ├── tests
-        │    │
-        │    ├── ds_utils    <- Tests of shared-specific source code.
-        │    │
-        │    └── project_1   <- Tests of project-specific source code.
         │
         └── project_1        <- Project-specific source code.
             ├── __init__.py
@@ -78,13 +73,31 @@ uvx --from md-toc md_toc --in-place github -- README.md
             ├── features.py  <- Code to create features for modeling.
             ├── plots.py     <- Code to create visualizations.
             │
-            └── modeling                
-                ├── __init__.py 
+            └── modeling
+                ├── __init__.py
                 ├── predict.py  <- Code to run model inference with trained models.
                 └── train.py    <- Code to train models.│
-             
+
 
 ```
 
 The naming convention for notebooks is a number (for ordering),
 the creator's initials, and a short `-` delimited description.
+
+## Useful commands
+
+```shell
+cd your-new-project-directory
+
+# Install pre-commit hooks.
+pre-commit install --install-hooks
+
+# Install Jupyter kernel for all projects.
+./bin/install-kernel
+
+# Start Jupyter Lab.
+uv run jupyter lab &
+
+# Run tests of code.
+./bin/run-tests
+```

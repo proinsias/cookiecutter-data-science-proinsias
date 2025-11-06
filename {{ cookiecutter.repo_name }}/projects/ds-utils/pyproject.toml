@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
+authors = [
+  { name = "Francis T. O'Donovan", email = "proinsias@users.noreply.github.com" },
+]
 dependencies = [
     "ipykernel>=6.29.5",
 ]

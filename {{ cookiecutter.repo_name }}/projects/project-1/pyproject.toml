@@ -2,8 +2,9 @@
 name = "project-1"
 version = "0.0.1"
 description = "A short description of the project."
-authors = ["Francis T. O'Donovan <proinsias@users.noreply.github.com>"]
-
+authors = [
+  { name = "Francis T. O'Donovan", email = "proinsias@users.noreply.github.com" },
+]
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -12,23 +13,8 @@ classifiers = [
 requires-python = "~=3.10.0"
 dependencies = [
     "ds-utils",
-    "ipyparallel",
-    "ipython",
-    "jupyterlab",
-    "jupyter_nbextensions_configurator",
-    "jupytext",
     "loguru",
-    "matplotlib",
-    "mkdocs",
-    "nbdime",
-    "notebook",
-    "numpy",
-    "pandas",
-    "pip",
-    "pytest",
     "python-dotenv",
-    "ruff",
-    "scikit-learn",
     "tqdm",
     "typer",
 ]
@@ -47,11 +33,23 @@ dev = [
     "deptry>=0.22.0",
     "flynt",
     "gitlint",
+    "ipyparallel",
+    "ipython",
+    "jupyterlab",
+    "jupyter_nbextensions_configurator",
+    "jupytext",
+    "markupsafe",
+    "matplotlib",
     "mkdocs-material>=8.5.10",
     "mkdocs>=1.4.2",
     "mkdocstrings[python]>=0.26.1",
     "mypy>=0.991",
+    "nbdime",
+    "nest_asyncio",
+    "numpy",
+    "pandas",
     "poethepoet",
+    "pqdm",
     "pre-commit>=2.20.0",
     "project-1",
     "pycln",
@@ -64,10 +62,13 @@ dev = [
     "pytest>=7.2.0",
     "refurb",
     "ruff>=0.9.2",
+    "scikit-learn",
+    "seaborn",
     "sqlfluff",
     "texthooks",
     "tox-uv>=1.11.3",
     "vulture",
+    "ydata_profiling",
 ]
 
 [tool.bandit]

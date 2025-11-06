@@ -13,21 +13,7 @@ uvx --from md-toc md_toc --in-place github -- README.md
 
 -   [My Data Science Cookiecutter](#my-data-science-cookiecutter)
     -   [Installation](#installation)
-    -   [Starting a new project](#starting-a-new-project)
-        -   [Additional tools](#additional-tools)
-
-<!--TOC-->
-
--   [My Data Science Cookiecutter](#my-data-science-cookiecutter)
-    -   [Installation](#installation)
-    -   [Starting a new project](#starting-a-new-project)
-        -   [Additional tools](#additional-tools)
-
-<!--TOC-->
-
--   [My Data Science Cookiecutter](#my-data-science-cookiecutter)
-    -   [Installation](#installation)
-    -   [Starting a new project](#starting-a-new-project)
+    -   [Starting a new project repository](#starting-a-new-project-repository)
         -   [Additional tools](#additional-tools)
 
 <!--TOC-->
@@ -38,26 +24,13 @@ uvx --from md-toc md_toc --in-place github -- README.md
 uv tool install cookiecutter-data-science
 ```
 
-## Starting a new project
+## Starting a new project repository
 
-To start a new project, run:
+To start a new project repository, run:
 
 ```bash
 ccds --checkout master --no-input \
     https://github.com/proinsias/cookiecutter-data-science-proinsias
 ```
 
-### Additional tools
-
-```shell
-cd your-new-project-directory
-
-# Install pre-commit hooks.
-pre-commit install --install-hooks
-
-# Install Jupyter kernel for the project
-./bin/install-kernel
-
-# Start Jupyter Lab.
-uv run jupyter lab
-```
+See the associated `README.md` for some handy commands.

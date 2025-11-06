@@ -3,7 +3,7 @@ name = {{ cookiecutter.module_name|tojson }}
 version = "0.0.1"
 description = {{ cookiecutter.description|tojson }}
 authors = [
-  { name = {{ cookiecutter.author_name|tojson }} },
+  { name = "Francis T. O'Donovan", email = "proinsias@users.noreply.github.com" },
 ]
 {% if cookiecutter.open_source_license != 'No license file' %}license = { file = "LICENSE" }{% endif %}
 readme = "README.md"
@@ -23,6 +23,7 @@ dev = [
     "deptry>=0.22.0",
     "flynt",
     "gitlint",
+    "ipykernel>=7.1.0",
     "ipyparallel",
     "jupyter_nbextensions_configurator",
     "jupytext",

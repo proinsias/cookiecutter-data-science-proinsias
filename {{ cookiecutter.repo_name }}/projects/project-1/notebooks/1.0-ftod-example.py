@@ -8,9 +8,9 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.18.1
 #   kernelspec:
-#     display_name: Python 3 (ipykernel)
+#     display_name: project-1
 #     language: python
-#     name: python3
+#     name: project-1
 # ---
 
 # %% [markdown]
@@ -24,7 +24,6 @@
 # %%
 # %load_ext autoreload
 # %autoreload 2
-# %matplotlib inline
 
 # %%
 import logging
@@ -40,17 +39,62 @@ import seaborn as sns
 import ydata_profiling
 from IPython.core.interactiveshell import InteractiveShell
 from IPython.display import display, display_markdown, Markdown
-from markupspace import escape
+from markupsafe import escape
 from pqdm.processes import pqdm
 # If you want threads instead:
 # from pqdm.threads import pqdm
 from tqdm.notebook import tqdm
 
+# Use project-1 kernel.
+from ds_utils.db_utils import DB_UTILS_CONSTANT
+
 # %%
-# pd.options.mode.chained_assignment = None
 InteractiveShell.ast_node_interactivity = 'all'
 # InteractiveShell.ast_node_interactivity = "last_expr"
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.StreamHandler()
+# Add the handler to the logger
+logger.addHandler(handler)
+
+# prettier plots
+plt.style.use('ggplot')
+# larger plots - two different ways.
+matplotlib.rc('figure', figsize=(15, 10))
+plt.rcParams['figure.dpi'] = 90
+
+# larger fonts
+sns.set_context('notebook', font_scale=1.5)
+
+dotenv.load_dotenv()
+nest_asyncio.apply()
+
+np.set_printoptions(precision=4)
+np.set_printoptions(suppress=True)
+# pd.options.mode.chained_assignment = None
+pd.set_option('display.max_rows', 500)
+pd.options.display.max_columns = 50
+pd.options.display.max_rows = 100
+pd.options.display.max_colwidth = 80
+# Adjust the number of columns profiled and displayed by the `info()` method.
+pd.options.display.max_info_columns = 150
+# Adjust the number of decimals to be displayed in a DataFrame.
+pd.options.display.precision = 15
+# Adjust the display format in a DataFrame.
+# pd.options.display.float_format = '{:.2f}%'.format
+# Prints and parses dates with the year first.
+pd.options.display.date_yearfirst = True
+
 tqdm.pandas()
+
+# %%
+data_dir = pathlib.Path.cwd().parent / 'data'
+data_dir
+
+# %%
+DB_UTILS_CONSTANT
+
 
 # %%
 
@@ -68,6 +112,7 @@ The table below:
 | a  |  1  |
 | b  |  2  |
 '''), raw=True)
+
 
 # %% [markdown]
 # Blue Alert Box: info.
@@ -92,44 +137,6 @@ The table below:
 # </div>
 
 # %%
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-# Add the handler to the logger
-logger.addHandler(handler)
-
-matplotlib.use('nbagg')
-# prettier plots
-plt.style.use('ggplot')
-# larger plots - two different ways.
-matplotlib.rc('figure', figsize=(15, 10))
-plt.rcParams['figure.dpi'] = 90
-
-# larger fonts
-sns.set_context('notebook', font_scale=1.5)
-
-dotenv.load_dotenv()
-nest_asyncio.apply()
-
-np.set_printoptions(precision=4)
-np.set_printoptions(suppress=True)
-pd.set_option('display.max_rows', 500)
-pd.options.display.max_columns = 50
-pd.options.display.max_rows = 100
-pd.options.display.max_colwidth = 80
-# Adjust the number of columns profiled and displayed by the `info()` method.
-pd.options.display.max_info_columns = 150
-# Adjust the number of decimals to be displayed in a DataFrame.
-pd.options.display.precision = 15
-# Adjust the display format in a DataFrame.
-# pd.options.display.float_format = '{:.2f}%'.format
-# Prints and parses dates with the year first.
-pd.options.display.date_yearfirst = True
-
-InteractiveShell.ast_node_interactivity = 'all'
-
-data_dir = pathlib.Path.cwd().parent / 'data'
-
 def square(a):
     return a*a
 
