@@ -60,6 +60,14 @@ Or look at [Getting Started with Quarto](https://quarto.org/docs/get-started/).
 ## Useful commands
 
 ```bash
+# To run a disabled task explicitly,
+# you can override the run_task parameter
+# when you build the pipeline.
+ploomber build --env--run_task True
+# or:
+ploomber task task_name --force --env--run_task True
+
+
 quarto preview hello.qmd
 
 quarto convert document.qmd

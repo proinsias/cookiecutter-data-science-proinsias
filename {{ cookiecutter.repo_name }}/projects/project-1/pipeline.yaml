@@ -1,0 +1,65 @@
+meta:
+    # Paths in task sources (e.g., scripts/fit.py) are relative to src/payrollaudit .
+    source_loader:
+        module: project_1
+
+clients:
+    # Use s3 unless overridden.
+    File: clients.get_s3 # See below.
+
+# # execute independent tasks in parallel
+# executor: parallel
+
+tasks:
+    # Example of task source (instead of a script source).
+    - source: tasks.features.sepal
+      product: resources/sepal.csv
+
+    - source: task1.py
+      product:
+          nb: resources/task1.html
+          data: resources/task1.csv
+      executor_params:
+          log_output: True
+
+    # Example of grid of tasks.
+    - source: random-forest.py
+      # generates random-forest-5-gini, random-forest-10-gini, ..., random-forest-20-entropy
+      name: random-forest-[[n_estimators]]-[[criterion]]
+      product: random-forest-[[n_estimators]]-[[criterion]].html
+      grid:
+          # creates 6 tasks (3 * 2)
+          n_estimators: [5, 10, 20]
+          criterion: [gini, entropy]
+
+    - source: generate_report.py
+      nb_product_key: [nb_ipynb, nb_pdf]
+      # Use the webpdf exporter (supports embedded charts).
+      # It will download chromium if needed.
+      nbconvert_exporter_name: webpdf
+      nbconvert_export_kwargs:
+          # optionally hide the code from the report
+          exclude_input: True
+          # optionally, exclude cells with certain tags
+          config:
+              HTMLExporter:
+                  preprocessors: [nbconvert.preprocessors.TagRemovePreprocessor]
+              TagRemovePreprocessor:
+                  remove_cell_tags: [exclude]
+      product:
+          nb_ipynb: resources/report.ipynb
+          nb_pdf: resources/report.pdf
+      executor_params:
+          log_output: True
+
+    - source: scripts/quarto-part1.sh
+      product: resources/part1.docx
+      params:
+          resources_:
+              qmd_file: part1.qmd
+
+    - source: scripts/task.py
+      name: my_task
+      product: output/my_task.txt
+      params:
+          run_task: "{{run_task}}"
