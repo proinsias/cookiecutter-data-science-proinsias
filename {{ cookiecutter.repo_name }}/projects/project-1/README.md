@@ -6,8 +6,8 @@ uvx --from md-toc md_toc --in-place github -- README.md
 -->
 <!--TOC-->
 
-- [Project 1](#project-1)
-  - [Project Structure](#project-structure)
+-   [Project 1](#project-1)
+    -   [Project Structure](#project-structure)
 
 <!--TOC-->
 
@@ -47,4 +47,27 @@ flowchart TD
     T --> KR[Optimized Keras]
     KR --> KRR(Metrics report)
     KR --> KRLC(Learning curve)
+```
+
+## Installation
+
+```bash
+brew install quarto
+```
+
+Or look at [Getting Started with Quarto](https://quarto.org/docs/get-started/).
+
+## Useful commands
+
+```bash
+quarto preview hello.qmd
+
+quarto convert document.qmd
+
+quarto render hello.qmd --to html
+quarto render hello.qmd --to docx
+quarto render hello.qmd --to pdf
+
+# Default is to not execute cells within notebook. Override using:
+quarto render notebook.ipynb --execute
 ```
