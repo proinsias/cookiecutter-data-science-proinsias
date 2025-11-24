@@ -5,7 +5,7 @@ from tqdm import tqdm
 import typer
 
 from ds_utils.db_utils import DB_UTILS_CONSTANT
-from {{ cookiecutter.module_name }}.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
+from project_1.config import PROCESSED_DATA_DIR, RAW_DATA_DIR
 
 app = typer.Typer()
 

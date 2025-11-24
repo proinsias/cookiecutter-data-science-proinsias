@@ -5,8 +5,8 @@ Use [mkdocs](http://www.mkdocs.org/) structure to update the documentation.
 
 Build locally with:
 
-    mkdocs build
+    uv run mkdocs build
 
 Serve locally with:
 
-    mkdocs serve
+    uv run mkdocs serve

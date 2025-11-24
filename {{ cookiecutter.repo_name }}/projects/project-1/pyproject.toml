@@ -206,5 +206,6 @@ multiline_newline = true
 require_final_semicolon = true
 
 [tool.uv.sources]
+# ftod-ds-utils = { path = "../../../ftod-ds-utils", editable = true }
 ds-utils = { path = "../ds-utils", editable = true }
 project-1 = { workspace = true }

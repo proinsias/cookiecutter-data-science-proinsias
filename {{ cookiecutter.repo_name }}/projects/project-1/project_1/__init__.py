@@ -1,1 +1,1 @@
-from {{ cookiecutter.module_name }} import config  # noqa: F401
+from project_1 import config  # noqa: F401
