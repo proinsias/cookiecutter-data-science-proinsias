@@ -27,11 +27,7 @@ build-backend = "setuptools.build_meta"
 [dependency-groups]
 dev = [
     "absolufy-imports",
-    "add-trailing-comma",
-    "auto-walrus",
     "darglint",
-    "deptry>=0.22.0",
-    "flynt",
     "gitlint",
     "ipyparallel",
     "ipython",
@@ -54,22 +50,18 @@ dev = [
     "pqdm",
     "pre-commit>=2.20.0",
     "project-1",
-    "pycln",
-    "pytest-black",
     "pytest-cov>=4.0.0",
     "pytest-mock>=3.8.2",
     "pytest-profiling",
     "pytest-sugar",
     "pytest-xdist",
     "pytest>=7.2.0",
-    "refurb",
     "ruff>=0.9.2",
     "scikit-learn",
     "seaborn",
     "sqlfluff",
     "texthooks",
     "tox-uv>=1.11.3",
-    "vulture",
     "ydata_profiling",
 ]
 
@@ -125,10 +117,6 @@ line-length = 99
 src = ["project_name"]
 include = ["pyproject.toml", "project_name/**/*.py"]
 builtins = ["_"]
-
-# Avoiding flagging (and removing) `V101` from any `# noqa`
-# directives, despite Ruff's lack of support for `vulture`.
-external = ["V101"]
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"

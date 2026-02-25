@@ -14,10 +14,17 @@ default_install_hook_types:
     - post-rewrite
 
 repos:
-    - repo: https://github.com/tsvikas/sync-with-uv
-      rev: v0.4.0 # replace with the latest version
+    - repo: https://github.com/astral-sh/uv-pre-commit
+      rev: 0.10.5
       hooks:
-          - id: sync-with-uv
+          # Keep uv.lock file up to date
+          - id: uv-lock
+
+    - repo: https://github.com/ewjoachim/sync-pre-commit-with-uv
+      rev: 1.1.0
+      hooks:
+          # Synchronizes versions between pre-commit and uv
+          - id: sync
 
     - repo: https://github.com/pre-commit/pre-commit-hooks
       rev: v5.0.0
@@ -30,7 +37,6 @@ repos:
           - id: check-symlinks
           - id: check-xml
           - id: check-yaml
-          - id: detect-private-key
           - id: double-quote-string-fixer
           - id: end-of-file-fixer
           - id: fix-byte-order-marker
@@ -123,10 +129,14 @@ repos:
           - id: check-github-workflows
           - id: check-readthedocs
 
-    - repo: https://github.com/zricethezav/gitleaks
-      rev: v8.28.0
+    - repo: https://github.com/sirwart/ripsecrets
+      rev: v0.1.11 # Use latest tag on GitHub
       hooks:
-          - id: gitleaks
+          - id: ripsecrets
+          # uncomment to check additional patterns
+          # args:
+          # - --additional-pattern 'mytoken*'
+          # - --additional-pattern 'mykey*'
 
     - repo: https://github.com/rhysd/actionlint
       rev: v1.7.7
