@@ -98,6 +98,8 @@ include = ["pyproject.toml", "{{ cookiecutter.module_name }}/**/*.py"]
 builtins = ["_"]
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+# Find and format code blocks in Markdown files
+extend-include = ["*.md"]
 
 # Exclude a variety of commonly ignored directories.
 exclude = [
