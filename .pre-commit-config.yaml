@@ -1,4 +1,3 @@
----
 # files: 'directory1/directory2'
 
 default_install_hook_types:
@@ -15,7 +14,7 @@ default_install_hook_types:
 
 repos:
     - repo: https://github.com/astral-sh/uv-pre-commit
-      rev: 0.10.5
+      rev: 0.9.7
       hooks:
           # Keep uv.lock file up to date
           - id: uv-lock
@@ -27,7 +26,7 @@ repos:
           - id: sync
 
     - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v5.0.0
+      rev: v6.0.0
       hooks:
           # General
           - id: check-added-large-files
@@ -41,19 +40,20 @@ repos:
           - id: end-of-file-fixer
           - id: fix-byte-order-marker
           - id: mixed-line-ending # Replaces or checks mixed line ending.
-          - id: trailing-whitespace
+          - id:
+                trailing-whitespace
 
-          # Json
+                # Json
           - id: check-json
           - id: pretty-format-json # Checks that all your JSON files are pretty.
 
-    # General
+      # General
 
     - repo: https://github.com/lycheeverse/lychee.git
       rev: nightly
       hooks:
           - id: lychee
-            args: ["--cache", "--suggest"]
+            args: [--cache, --suggest]
 
     - repo: https://github.com/pre-commit/mirrors-prettier
       rev: v4.0.0-alpha.8
@@ -61,7 +61,7 @@ repos:
           - id: prettier
             stages: [pre-commit]
 
-    # Git
+      # Git
 
     - repo: https://github.com/jorisroovers/gitlint
       rev: v0.19.1
@@ -69,35 +69,37 @@ repos:
           - id: gitlint
 
     - repo: https://github.com/commitizen-tools/commitizen
-      rev: v4.8.3
+      rev: v4.13.9
       hooks:
           - id: commitizen
             stages: [commit-msg]
 
-    # YAML
+      # YAML
 
     - repo: https://github.com/adrienverge/yamllint
-      rev: v1.37.1
+      rev: v1.38.0
       hooks:
           - id: yamllint
             args: [-c=.yamllint.yml]
 
-    # SQL
+      # SQL
 
     - repo: https://github.com/sqlfluff/sqlfluff
-      rev: 3.4.2
+      rev: 4.1.0
       hooks:
-          - id: sqlfluff-lint
-          # For dbt projects, this installs the dbt "extras".
-          # You will need to select the relevant dbt adapter for your dialect
-          # (https://docs.getdbt.com/docs/available-adapters):
-          # additional_dependencies: ['<dbt-adapter>', 'sqlfluff-templater-dbt']
-          - id: sqlfluff-fix
-          # Arbitrary arguments to show an example
-          # args: [--rules, "L003,L014"]
-          # additional_dependencies: ['<dbt-adapter>', 'sqlfluff-templater-dbt']
+          - id:
+                sqlfluff-lint
+                # For dbt projects, this installs the dbt "extras".
+                # You will need to select the relevant dbt adapter for your dialect
+                # (https://docs.getdbt.com/docs/available-adapters):
+                # additional_dependencies: ['<dbt-adapter>', 'sqlfluff-templater-dbt']
+          - id:
+                sqlfluff-fix
+                # Arbitrary arguments to show an example
+                # args: [--rules, "L003,L014"]
+                # additional_dependencies: ['<dbt-adapter>', 'sqlfluff-templater-dbt']
 
-    # Mixed
+      # Mixed
 
     - repo: https://github.com/kraymer/cesar
       rev: v1.0.0
@@ -111,19 +113,19 @@ repos:
           - id: script-must-not-have-extension
 
     - repo: https://github.com/scop/pre-commit-shfmt
-      rev: v3.12.0-2
+      rev: v3.13.0-1
       hooks:
           - id: shfmt
 
     - repo: https://github.com/Lucas-C/pre-commit-hooks
-      rev: v1.5.5
+      rev: v1.5.6
       hooks:
           - id: remove-crlf
           - id: remove-tabs
             exclude: .git/COMMIT_EDITMSG
 
     - repo: https://github.com/sirosen/check-jsonschema
-      rev: 0.33.2
+      rev: 0.37.1
       hooks:
           - id: check-github-actions
           - id: check-github-workflows
@@ -132,28 +134,29 @@ repos:
     - repo: https://github.com/sirwart/ripsecrets
       rev: v0.1.11 # Use latest tag on GitHub
       hooks:
-          - id: ripsecrets
-          # uncomment to check additional patterns
-          # args:
-          # - --additional-pattern 'mytoken*'
-          # - --additional-pattern 'mykey*'
+          - id:
+                ripsecrets
+                # uncomment to check additional patterns
+                # args:
+                # - --additional-pattern 'mytoken*'
+                # - --additional-pattern 'mykey*'
 
     - repo: https://github.com/rhysd/actionlint
-      rev: v1.7.7
+      rev: v1.7.12
       hooks:
           - id: actionlint
 
     - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-      rev: 3.2.1
+      rev: 3.6.1
       hooks:
           - id: editorconfig-checker
 
     - repo: https://github.com/MarcoGorelli/cython-lint
-      rev: v0.16.7
+      rev: v0.19.0
       hooks:
           - id: cython-lint
 
     - repo: https://github.com/bridgecrewio/checkov/
-      rev: 3.2.458
+      rev: 3.2.513
       hooks:
           - id: checkov

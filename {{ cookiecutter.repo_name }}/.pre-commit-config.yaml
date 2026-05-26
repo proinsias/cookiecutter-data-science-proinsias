@@ -156,6 +156,14 @@ repos:
           - id: ruff-format
             types_or: [python, pyi, jupyter, markdown] # Run on notebooks too.
 
+    - repo: local
+      hooks:
+          - id: pyscn
+            name: pyscn check (staged)
+            entry: bash -c 'uvx pyscn@latest check --quiet "$@"' --
+            language: python
+            files: '\.py$'
+
     # YAML
 
     - repo: https://github.com/adrienverge/yamllint
