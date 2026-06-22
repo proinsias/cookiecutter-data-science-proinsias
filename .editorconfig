@@ -42,7 +42,7 @@ trim_trailing_whitespace = true
 quote_type = double
 
 # YAML Based files - 2 space indent
-[*.{yml, yaml, sls}]
+[*.{yml,yaml,sls}]
 indent_size = 2
 indent_style = space
 
