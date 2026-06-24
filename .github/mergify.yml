@@ -1,0 +1,78 @@
+---
+pull_request_rules:
+  # ── Label automation ────────────────────────────────────────────────────────
+
+  - name: label Python changes
+    conditions:
+      - "files ~= \\.py$"
+    actions:
+      label:
+        add: [python]
+
+  - name: label CI/workflow changes
+    conditions:
+      - "files ~= ^\\.github/"
+    actions:
+      label:
+        add: [ci]
+
+  - name: label documentation changes
+    conditions:
+      - or:
+          - "files ~= \\.md$"
+          - "files ~= ^docs/"
+    actions:
+      label:
+        add: [documentation]
+
+  - name: label dependency updates
+    conditions:
+      - or:
+          - "files = pyproject.toml"
+          - "files = uv.lock"
+          - "files = .pre-commit-config.yaml"
+    actions:
+      label:
+        add: [dependencies]
+
+  # ── Conflict management ──────────────────────────────────────────────────────
+
+  - name: flag merge conflicts
+    conditions:
+      - conflict
+    actions:
+      label:
+        add: [conflict]
+      comment:
+        message: "This pull request has merge conflicts. Please resolve them before merging."
+
+  - name: remove conflict label when resolved
+    conditions:
+      - -conflict
+      - "label = conflict"
+    actions:
+      label:
+        remove: [conflict]
+
+  # ── Auto-merge ───────────────────────────────────────────────────────────────
+
+  - name: auto-merge Dependabot minor and patch updates
+    conditions:
+      - "author = dependabot[bot]"
+      - -draft
+      - -conflict
+      - or:
+          - "title ~= (?i)\\bminor\\b"
+          - "title ~= (?i)\\bpatch\\b"
+    actions:
+      merge:
+        method: squash
+
+  - name: auto-merge when automerge label is set
+    conditions:
+      - -draft
+      - -conflict
+      - "label = automerge"
+    actions:
+      merge:
+        method: squash
